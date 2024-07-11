@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/Images">
+        <file>PaintIcons/ellipse.png</file>
+        <file>PaintIcons/icons8-pen-40.png</file>
+        <file>PaintIcons/line.png</file>
+        <file>PaintIcons/polygon.png</file>
+        <file>PaintIcons/rect.png</file>
+        <file>PaintIcons/roundrectangle.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>PaintIcons/ellipse.png</file>
+        <file>PaintIcons/icons8-pen-40.png</file>
+        <file>PaintIcons/line.png</file>
+        <file>PaintIcons/polygon.png</file>
+        <file>PaintIcons/rect.png</file>
+        <file>PaintIcons/roundrectangle.png</file>
+    </qresource>
+</RCC>
