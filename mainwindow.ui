@@ -19,27 +19,27 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>111</width>
+      <width>91</width>
       <height>301</height>
      </rect>
     </property>
     <property name="title">
      <string>Tool Box</string>
     </property>
-    <widget class="QWidget" name="layoutWidget">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>30</width>
-       <height>146</height>
+       <width>71</width>
+       <height>101</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QGridLayout" name="gridLayout">
       <property name="spacing">
        <number>0</number>
       </property>
-      <item>
+      <item row="0" column="0">
        <widget class="QPushButton" name="pushButtonRectangle">
         <property name="text">
          <string/>
@@ -50,7 +50,7 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item row="0" column="1">
        <widget class="QPushButton" name="pushButtonEllipse">
         <property name="text">
          <string/>
@@ -61,7 +61,7 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item row="1" column="0">
        <widget class="QPushButton" name="pushButtonLine">
         <property name="text">
          <string/>
@@ -72,7 +72,7 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item row="1" column="1">
        <widget class="QPushButton" name="pushButtonRoundRectangle">
         <property name="text">
          <string/>
@@ -83,7 +83,7 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item row="2" column="0">
        <widget class="QPushButton" name="pushButtonPolygon">
         <property name="text">
          <string/>
@@ -94,7 +94,7 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item row="2" column="1">
        <widget class="QPushButton" name="pushButtonPen">
         <property name="text">
          <string/>
@@ -107,18 +107,65 @@
       </item>
      </layout>
     </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>130</y>
+       <width>71</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QPushButton" name="pushButtonRedo">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>PaintIcons/Redo.png</normaloff>PaintIcons/Redo.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QPushButton" name="pushButtonUndo">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="PaintResources.qrc">
+          <normaloff>:/new/prefix1/Desktop/PaintIcons/Undo.png</normaloff>:/new/prefix1/Desktop/PaintIcons/Undo.png</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QPushButton" name="pushButtonSelect">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>170</y>
+       <width>31</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>20</y>
+      <x>130</x>
+      <y>0</y>
       <width>631</width>
       <height>511</height>
      </rect>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>TEXTBOX</string>
     </property>
    </widget>
   </widget>
@@ -141,7 +188,16 @@
     <addaction name="actionClose_Window"/>
     <addaction name="actionOpen_New_Window"/>
    </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionUndo"/>
+    <addaction name="actionRedo"/>
+    <addaction name="separator"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOpen">
@@ -172,7 +228,19 @@
     <string>Open New Window</string>
    </property>
   </action>
+  <action name="actionUndo">
+   <property name="text">
+    <string>Undo</string>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="text">
+    <string>Redo</string>
+   </property>
+  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="PaintResources.qrc"/>
+ </resources>
  <connections/>
 </ui>

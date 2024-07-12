@@ -6,5 +6,13 @@
         <file>PaintIcons/polygon.png</file>
         <file>PaintIcons/rect.png</file>
         <file>PaintIcons/roundrectangle.png</file>
+        <file>../../Desktop/PaintIcons/Redo.png</file>
+        <file>../../Desktop/PaintIcons/Undo.png</file>
+        <file>PaintIcons/Redo.png</file>
+        <file>PaintIcons/Undo.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>PaintIcons/Redo.png</file>
+        <file>PaintIcons/Undo.png</file>
     </qresource>
 </RCC>
