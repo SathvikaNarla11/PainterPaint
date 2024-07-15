@@ -30,13 +30,10 @@ private slots:
     void on_pushButtonRoundRectangle_clicked();
     void on_pushButtonPolygon_clicked();
     void on_pushButtonPen_clicked();
-
-
+    void updateCanvas();
 
     void on_actionUndo_triggered();
-
     void on_actionRedo_triggered();
-
     void on_pushButtonSelect_clicked();
     void clearSelectedArea();
 
@@ -61,6 +58,8 @@ private:
     QPoint offset;
     QPoint movePos;
 
+
+
     enum Shape { None, Rectangle, Ellipse, Line, RoundRectangle, Polygon, Select };
     Shape currentShape;
 
@@ -69,8 +68,10 @@ private:
         Shape shape;
         QRect rect;
         bool isSelected;
+        QPoint start;
 
     };
+
 
     QVector<ShapeInfo> shapes;
     ShapeInfo* selectedShape;
@@ -79,7 +80,8 @@ private:
     QStack<QImage> undoStack;
     QStack<QImage> redoStack;
 };
-#endif // MAINWINDOW_H
+#endif
+// MAINWINDOW_H
 //        bool operator==(const ShapeInfo& other) const {
 //            return (shape == other.shape && rect == other.rect && isSelected == other.isSelected);
 //        }

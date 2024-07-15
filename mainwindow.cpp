@@ -10,12 +10,14 @@
 #include <QMouseEvent>
 #include <QVBoxLayout>
 #include <QColorDialog>
+#include <QLineF>
 
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , selectedShape(nullptr)
+
 {
     currentFile = "";
     ui->setupUi(this);
@@ -60,7 +62,6 @@ QColor newColor;
 QPen pen;
 void MainWindow::on_pushButtonPen_clicked()
 {
-    //    currentShape = Rectangle;
     newColor = QColorDialog::getColor();
     pen.setColor(newColor);
 
@@ -86,10 +87,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
                     selectedShape = &shapeInfo;
                     offset = clickPos - shapeInfo.rect.topLeft();
                     movingShape = true;
-
-//                    selectedShape->rect;
                     clearSelectedArea();
-
                     update();
                     return;
                 }
@@ -113,23 +111,31 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
     if (drawing && ui->label->rect().contains(movePos))
     {
         endPosition = movePos;
+
         qDebug() << "Mouse move at:" << movePos;
         update();
     }
     else if (movingShape &&  selectedShape && ui->label->rect().contains(movePos))
     {
         selectedShape->rect.moveTo(movePos - offset );
-        //selectedShape->rect.translated(movePos - offset);
+        updateCanvas();
         qDebug() << "Shape moved to:" << selectedShape->rect;
         update();
     }
 }
 
+
+void MainWindow::updateCanvas()
+{
+    ui->label->setPixmap(QPixmap::fromImage(*canvas));
+}
+
 void MainWindow::clearSelectedArea()
 {
     QPainter painter(canvas);
-
-    painter.fillRect(selectedShape->rect.adjusted(0, 0, 1, 1), Qt::white);
+    painter.setCompositionMode(QPainter::CompositionMode_Source);
+    painter.fillRect(selectedShape->rect.adjusted(0, 0, 2, 2), Qt::white);
+    painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
     update();
 }
 
@@ -224,8 +230,9 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
         {
             painter.drawPolygon(QPolygon(selectedShape->rect));
         }
-
+        clearSelectedArea();
         ui->label->setPixmap(QPixmap::fromImage(*canvas));
+
         update();
     }
 }
@@ -242,6 +249,8 @@ void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)
 {
 
 }
+
+
 void MainWindow::paintEvent(QPaintEvent *event)
 {
     QMainWindow::paintEvent(event);
